@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, Platform } from "react-native";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
+    paddingTop: Platform.OS === 'android' ? 25 : 0, // Adiciona padding para Android
   },
   title: {
     fontSize: 24,
@@ -57,13 +58,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    width: "100%",
+    width: 200,
     height: 40,
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
+    marginTop: 10, // Adiciona marginTop
   },
   button: {
     backgroundColor: "blue",
