@@ -8,28 +8,43 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
+  useAnimatedGestureHandler,
 } from "react-native-reanimated";
+import { PanGestureHandler, GestureHandlerRootView  } from 'react-native-gesture-handler'
 
 const App = () => {
-  const sharedValue = useSharedValue(1);
+  const translateX = useSharedValue(0);
 
   const cardStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        translateX: sharedValue.value * 500 - 250,
+        translateX: translateX.value,
       },
     ]
   }));
+
+  const gestureHandler = useAnimatedGestureHandler({
+    onStart: _ => {
+      console.warn('touch start')
+    },
+    onActive: event => {
+      translateX.value = event.translationX;
+    },
+    onEnd: () => {
+      console.warn('touch ended')
+    }
+  })
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
     <View style={styles.pageContainer}>
+      <PanGestureHandler onGestureEvent={gestureHandler}>
       <Animated.View style={[styles.AnimatedCard, cardStyle]}>
         <Card user={users[1]} />
       </Animated.View>
-      <Pressable onPress={() => (sharedValue.value = withSpring(Math.random()))}>
-        <Text>Change value</Text>
-      </Pressable>
+      </PanGestureHandler>
       {/* <Login/>*/}
     </View>
+    </GestureHandlerRootView>
   );
 };
 
