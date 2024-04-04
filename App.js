@@ -3,6 +3,7 @@ import React from "react";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import Card from "./src/components/PawCard";
 import users from "./assets/data/users";
+import Cadastro from "./src/components/Cadastro"
 import Login from "./src/components/Login";
 import Animated, {
   useSharedValue,
@@ -39,10 +40,11 @@ const App = () => {
     <View style={styles.pageContainer}>
       <PanGestureHandler onGestureEvent={gestureHandler}>
       <Animated.View style={[styles.AnimatedCard, cardStyle]}>
-        <Card user={users[1]} />
+        {/* <Card user={users[1]} /> */}
       </Animated.View>
       </PanGestureHandler>
-      {/* <Login/>*/}
+      {/* <Login/> */}
+      <Cadastro/>
     </View>
     </GestureHandlerRootView>
   );
