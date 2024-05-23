@@ -15,10 +15,16 @@
       "adaptiveIcon": {
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.emerson147.PawMate"
     },
     "web": {
       "favicon": ""
+    },
+    "extra": {
+      "eas": {
+        "projectId": "33ec4b3f-5894-453a-bb1b-7004a1ce317b"
+      }
     }
   }
 }
