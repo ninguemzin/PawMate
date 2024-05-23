@@ -50,8 +50,6 @@ const App = () => {
     </GestureHandlerRootView>
   );
 };
-gegwrag;
-wragwa;
 
 const styles = StyleSheet.create({
   pageContainer: {
