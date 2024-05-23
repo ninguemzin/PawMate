@@ -10,7 +10,10 @@ import Animated, {
   withSpring,
   useAnimatedGestureHandler,
 } from "react-native-reanimated";
-import { PanGestureHandler, GestureHandlerRootView  } from 'react-native-gesture-handler'
+import {
+  GestureHandlerRootView,
+  PanGestureHandler,
+} from "react-native-gesture-handler";
 
 const App = () => {
   const translateX = useSharedValue(0);
@@ -20,33 +23,35 @@ const App = () => {
       {
         translateX: translateX.value,
       },
-    ]
+    ],
   }));
 
   const gestureHandler = useAnimatedGestureHandler({
-    onStart: _ => {
-      console.warn('touch start')
+    onStart: (_, context) => {
+      context.starX = translateX.value;
     },
-    onActive: event => {
-      translateX.value = event.translationX;
+    onActive: (event, context) => {
+      translateX.value = context.starX = event.translationX;
     },
     onEnd: () => {
-      console.warn('touch ended')
-    }
-  })
+      console.warn("touch ended");
+    },
+  });
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-    <View style={styles.pageContainer}>
-      <PanGestureHandler onGestureEvent={gestureHandler}>
-      <Animated.View style={[styles.AnimatedCard, cardStyle]}>
-        <Card user={users[1]} />
-      </Animated.View>
-      </PanGestureHandler>
-      {/* <Login/>*/}
-    </View>
+      <View style={styles.pageContainer}>
+        <PanGestureHandler onGestureEvent={gestureHandler}>
+          <Animated.View style={[styles.AnimatedCard, cardStyle]}>
+            <Card user={users[1]} />
+          </Animated.View>
+        </PanGestureHandler>
+        {/* <Login/>*/}
+      </View>
     </GestureHandlerRootView>
   );
 };
+gegwrag;
+wragwa;
 
 const styles = StyleSheet.create({
   pageContainer: {
@@ -55,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   animatedCard: {
-    width: "100%", 
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
