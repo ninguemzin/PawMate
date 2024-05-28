@@ -1,5 +1,18 @@
-import "react-native-gesture-handler";
 import React from "react";
+// import { StatusBar } from "react-native";
+
+// import { NavigationContainer } from '@react-navigation/native'
+// import Routes from './src/routes'
+
+// export default function App(){
+//   return (
+//     <NavigationContainer>
+//       <Routes/>
+//     </NavigationContainer>
+//   );
+// }
+
+import "react-native-gesture-handler";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import Card from "./src/components/PawCard";
 import users from "./assets/data/users";
@@ -64,3 +77,7 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
+
+
