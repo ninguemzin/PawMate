@@ -1,21 +1,24 @@
-import { createNativeStackNavigator} from '@react-navigation/native-stack';
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Welcome from '../pages/Welcome';
-import SingIn from '../pages/SingIn';
+import SignIn from '../pages/SignIn';
 
 const Stack = createNativeStackNavigator();
 
-    return(
-       <Stack.Navigator>
-        <Stack.Screen
-            name="Welcome"
-            component={Welcome}
-        />
-
-        <Stack.Screen
-            name="SingIn"
-            component={SingIn}
-        />
-        
-       </Stack.Navigator> 
-    )
+export default function Routes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Welcome"
+        component={Welcome}
+        options={{ headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{ headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+}

@@ -1,83 +1,14 @@
-import React from "react";
-// import { StatusBar } from "react-native";
+import React from 'react';
+import { StatusBar } from 'expo-status-bar'
 
-// import { NavigationContainer } from '@react-navigation/native'
-// import Routes from './src/routes'
+import { NavigationContainer } from '@react-navigation/native'
+import Routes from './src/routes'
 
-// export default function App(){
-//   return (
-//     <NavigationContainer>
-//       <Routes/>
-//     </NavigationContainer>
-//   );
-// }
-
-import "react-native-gesture-handler";
-import { View, StyleSheet, Text, Pressable } from "react-native";
-import Card from "./src/components/PawCard";
-import users from "./assets/data/users";
-import Cadastro from "./src/components/Cadastro"
-import Login from "./src/components/Login";
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  useAnimatedGestureHandler,
-} from "react-native-reanimated";
-import { PanGestureHandler, GestureHandlerRootView  } from 'react-native-gesture-handler'
-
-const App = () => {
-  const translateX = useSharedValue(0);
-
-  const cardStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateX: translateX.value,
-      },
-    ]
-  }));
-
-  const gestureHandler = useAnimatedGestureHandler({
-    onStart: _ => {
-      console.warn('touch start')
-    },
-    onActive: event => {
-      translateX.value = event.translationX;
-    },
-    onEnd: () => {
-      console.warn('touch ended')
-    }
-  })
+export default function App() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-    <View style={styles.pageContainer}>
-      <PanGestureHandler onGestureEvent={gestureHandler}>
-      <Animated.View style={[styles.AnimatedCard, cardStyle]}>
-        {/* <Card user={users[1]} /> */}
-      </Animated.View>
-      </PanGestureHandler>
-      {/* <Login/> */}
-      <Cadastro/>
-    </View>
-    </GestureHandlerRootView>
+    <NavigationContainer>
+      <StatusBar backgroundColor="#38A69D" barStyle="light-content"/>
+      <Routes/>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  pageContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-  },
-  animatedCard: {
-    width: "100%", 
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
-
-export default App;
-
-
-
-
+}

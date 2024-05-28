@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export function SingIn() {
+
+export default function SignIn() {
   return (
-    <View >
-    <Text> Tela Bem vindos</Text>
+    <View>
+        <Text>Tela login</Text>
     </View>
   );
 }
