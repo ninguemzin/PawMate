@@ -1,27 +1,30 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
+import * as Animatable from 'react-native-animatable'
+
 export default function Welcome() {
   return (
     <View style={styles.container}>
        
       <View style={styles.containerLogo}>
-        <Image
+        <Animatable.Image
+          animation="flipInY"
           source={require('../../assets/OIG4.png')}
           style={{ width: '100%'}}
           resizeMode="contain"
         />
       </View>
 
-      <View style={styles.containerForm}>
-        <Text style={styles.title}>Faça amizades, e ache um novo aumigo para seu dog.</Text>
-        <Text style={styles.text}>Faça o login</Text>
+      <Animatable.View delay={600} animation="fadeInUp" style={styles.containerForm}>
+        <Text style={styles.title}>Faça amizades, e ache um novo aumigo para seu dog!</Text>
+        <Text style={styles.text}>Faça o login para começar</Text>
       
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Acessar</Text>
       </TouchableOpacity>
       
-      </View>
+      </Animatable.View>
 
 
     </View>
